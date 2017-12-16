@@ -3,6 +3,7 @@ package com.viniciusps2.flightapp.flight;
 import com.viniciusps2.flightapp.aircraft.Aircraft;
 import com.viniciusps2.flightapp.city.City;
 import com.viniciusps2.flightapp.pilot.Pilot;
+import lombok.Builder;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -10,6 +11,7 @@ import java.util.Date;
 
 @Entity
 @Data
+@Builder
 public class Flight {
 
     @Id
