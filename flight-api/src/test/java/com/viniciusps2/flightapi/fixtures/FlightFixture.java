@@ -17,7 +17,7 @@ public class FlightFixture {
                 .destinationCity(new City(1L, "Guarulhos", "SP", "BR"))
                 .originCity(new City(2L, "Congonhas", "SP", "BR"))
                 .pilot(new Pilot(1L, "Fulano", "Silva"))
-                .flightStatus(FlightStatus.SCHEDULED)
+                .status(FlightStatus.SCHEDULED)
                 .build();
 
     }

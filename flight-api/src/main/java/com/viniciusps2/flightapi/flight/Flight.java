@@ -21,7 +21,7 @@ public class Flight {
     @Id
     private Long id;
 
-    private FlightStatus flightStatus;
+    private FlightStatus status;
 
     @OneToOne
     @JoinColumn(name = "aircraft_id", nullable = false)
@@ -45,7 +45,7 @@ public class Flight {
     @Column(nullable = false)
     private Date arrivalDate;
 
-    public String getFlightStatusLabel() {
-        return flightStatus.getLabel();
+    public String getStatusLabel() {
+        return status.getLabel();
     }
 }
