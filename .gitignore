@@ -22,3 +22,9 @@ nbbuild/
 dist/
 nbdist/
 .nb-gradle/
+
+### Frontend ###
+node_modules/
+node_modules
+coverage/
+temp/
