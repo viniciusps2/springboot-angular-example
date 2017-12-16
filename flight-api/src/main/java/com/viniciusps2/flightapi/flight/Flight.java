@@ -1,10 +1,12 @@
-package com.viniciusps2.flightapp.flight;
+package com.viniciusps2.flightapi.flight;
 
-import com.viniciusps2.flightapp.aircraft.Aircraft;
-import com.viniciusps2.flightapp.city.City;
-import com.viniciusps2.flightapp.pilot.Pilot;
+import com.viniciusps2.flightapi.aircraft.Aircraft;
+import com.viniciusps2.flightapi.city.City;
+import com.viniciusps2.flightapi.pilot.Pilot;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -12,6 +14,8 @@ import java.util.Date;
 @Entity
 @Data
 @Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class Flight {
 
     @Id
@@ -41,7 +45,7 @@ public class Flight {
     @Column(nullable = false)
     private Date arrivalDate;
 
-    public String getFlightStatus() {
+    public String getFlightStatusLabel() {
         return flightStatus.getLabel();
     }
 }

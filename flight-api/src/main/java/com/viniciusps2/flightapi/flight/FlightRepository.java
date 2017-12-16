@@ -1,4 +1,4 @@
-package com.viniciusps2.flightapp.flight;
+package com.viniciusps2.flightapi.flight;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

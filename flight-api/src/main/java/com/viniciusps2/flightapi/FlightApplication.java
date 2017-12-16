@@ -1,4 +1,4 @@
-package com.viniciusps2.flightapp;
+package com.viniciusps2.flightapi;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

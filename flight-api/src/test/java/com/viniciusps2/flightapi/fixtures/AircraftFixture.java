@@ -1,6 +1,6 @@
-package com.viniciusps2.flightapp.fixtures;
+package com.viniciusps2.flightapi.fixtures;
 
-import com.viniciusps2.flightapp.aircraft.Aircraft;
+import com.viniciusps2.flightapi.aircraft.Aircraft;
 
 public class AircraftFixture {
     public static Aircraft getAircraft () {
