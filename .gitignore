@@ -25,6 +25,6 @@ nbdist/
 
 ### Frontend ###
 node_modules/
-node_modules
+bower_components/
 coverage/
 temp/

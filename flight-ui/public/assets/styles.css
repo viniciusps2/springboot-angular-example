@@ -1,0 +1,30 @@
+body {
+	background: #e0e0e0;
+	margin-top: 55px;
+}
+
+.navbar-inverse .navbar-brand {
+	color: #fff;
+}
+
+.navbar-custom {
+	background-color: #1564BF;
+	background-image: linear-gradient(to bottom,#1564bf 0,#063469 100%);
+	border: 0;
+}
+
+.navbar-custom .navbar-nav > li > a {
+	color: #fff;
+}
+
+
+.navbar-custom .navbar-nav > li > a:hover {
+	color: #a6cfff;
+	background-color: #004491;
+	background-image: linear-gradient(to bottom,#1564bf 0,#063469 100%);
+}
+
+.navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:hover, .navbar-inverse .navbar-nav > .active > a:focus {
+	background-color: #004491;
+	background-image: linear-gradient(to bottom,#1156a5 0,#082f5d 100%);
+}
