@@ -21,12 +21,17 @@
 
     return {
       list: list,
+      search: search,
       create: create,
       findById: findById
     }
 
     function list () {
       return resource.query().$promise
+    }
+
+    function search (searchParams) {
+      return resource.query({search: JSON.stringify(searchParams)}).$promise
     }
 
     function findById (id) {

@@ -1,13 +1,51 @@
 <div class="container">
-	<div class="row">
-		<h3>{{vm.title}}</h3>
-	</div>
+	<form name="flight-search">
+		<div class="row">
+			<div class="panel panel-default">
+	  			<div class="panel-heading">Search</div>
+	  			
+				<div class="panel-body">
+					
+					<div class="col-md-1 form-group">
+						<label for="flightNumber">Nº:</label>
+						<input id="flightNumber" class="form-control" type="text" ng-model="vm.searchParams.id">
+					</div>
 
-	<div class="row">
-		<button class="btn btn-primary btn-md" role="button" ng-click="vm.addFlight()">New Flight</button>
-	</div>
+					<div class="col-md-2 form-group">
+						<label for="departureDate">Departure Date:</label>
+						<input id="departureDate" class="form-control" type="text" ng-model="vm.searchParams.departure.from">
+					</div>
 
-  	<hr class="my-4">
+					<div class="col-md-2 form-group">
+						<label for="location">Origin:</label>
+						<select id="location" class="form-control" ng-model="vm.searchParams.location">
+						</select>
+					</div>
+
+					<div class="col-md-2 form-group">
+						<label for="destination">Destination:</label>
+						<select id="destination" class="form-control" ng-model="vm.searchParams.destination">
+						</select>
+					</div>
+
+					<div class="col-md-2 form-group">
+						<label for="status">Status:</label>
+						<select id="status" class="form-control" ng-model="vm.searchParams.status">
+						</select>
+					</div>
+
+					<div class="col-md-2 form-group">
+						<br>
+						<button class="btn btn-primary btn-md" role="button" ng-click="vm.search()">Search</button>
+					</div>
+
+
+					
+				</div>
+
+			</div>
+		</div>
+	</form>
 
 	<div class="row" ng-if="vm.message.error">
 		<div class="alert alert-danger">{{vm.message.error}}</div>
@@ -19,10 +57,8 @@
 
 	<div class="row">
 		<div class="panel panel-default">
+   		  <div class="panel-heading">{{vm.flights.length}} flights found</div>
 		  
-
-		  <div class="panel-heading">Flight List</div>
-
 		  <table class="table table-flights">
 
 		  	<tbody ng-if="!vm.flights.length">
@@ -36,26 +72,25 @@
 		  	
 		  	<tbody ng-if="vm.flights.length">
 			  	<tr>
-			  		<th class="col-md-2">Departure</th>
-			  		<th class="col-md-2">Arrival</th>
-			  		<th class="col-md-1">Origin</th>
-			  		<th class="col-md-1">Destination</th>
-			  		<th class="col-md-1">Aircraft</th>
-			  		<th class="col-md-2">Pilot</th>
-			  		<th class="col-md-1">Status</th>
-			  		<th class="col-md-2"></th>
+			  		<th class="col-md-1">Nº</th>
+			  		<th class="col-md-1">Departure</th>
+			  		<th class="col-md-1">Arrival</th>
+			  		<th class="col-md-2">Origin</th>
+			  		<th class="col-md-2">Destination</th>
+			  		<th class="col-md-2">Aircraft</th>
+			  		<th class="col-md-2">Status</th>
+			  		<th class="col-md-1"></th>
 			  	</tr>	    
 			  	<tr ng-repeat="flight in vm.flights">
+			      <td>{{flight.id}}</td>
 			      <td>{{flight.departureDate | date:'medium'}}</td>
 			      <td>{{flight.arrivalDate | date:'medium'}}</td>
-			      <td>{{flight.originCity.name}}/{{flight.originCity.stateCode}} - {{flight.originCity.countryCode}}</td>
-			      <td>{{flight.destinationCity.name}}/{{flight.destinationCity.stateCode}} - {{flight.destinationCity.countryCode}}</td>
-			      <td>{{flight.aircraft.model}} - {{flight.aircraft.serialNumber}}</td>
-			      <td>{{flight.pilot.firstName}} {{flight.pilot.lastName}}</td>
+			      <td>{{flight.origin.code}} - {{flight.origin.location}}</td>
+			      <td>{{flight.destination.code}} - {{flight.destination.location}}</td>
+			      <td>{{flight.aircraft.model}} / {{flight.aircraft.serialNumber}}</td>
 			      <td>{{flight.statusLabel}}</td>
 			      <td>
-					<button class="btn btn-success btn-md" role="button" ng-click="vm.editFlight(flight)">Edit</button>
-					<button class="btn btn-danger btn-md" role="button" ng-click="vm.removeFlight(flight)">Remove</button>
+					<button class="btn btn-primary btn-md" role="button" ng-click="vm.viewFlight(flight.id)">Details</button>
 			      </td>
 			    </tr>
 			  </tbody>
