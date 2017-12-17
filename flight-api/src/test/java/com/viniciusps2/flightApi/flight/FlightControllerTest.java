@@ -1,8 +1,8 @@
-package com.viniciusps2.flightapi.flight;
+package com.viniciusps2.flightApi.flight;
 
-import com.viniciusps2.flightapi.FlightApplication;
-import com.viniciusps2.flightapi.fixtures.FlightFixture;
-import com.viniciusps2.flightapi.helpers.PageWrapper;
+import com.viniciusps2.flightApi.FlightApplication;
+import com.viniciusps2.flightApi.fixtures.FlightFixture;
+import com.viniciusps2.flightApi.helpers.PageWrapper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,4 +1,4 @@
-package com.viniciusps2.flightapi.flight;
+package com.viniciusps2.flightApi.flight;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

@@ -1,4 +1,4 @@
-package com.viniciusps2.flightapi;
+package com.viniciusps2.flightApi;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

@@ -1,8 +1,8 @@
-package com.viniciusps2.flightapi.flight;
+package com.viniciusps2.flightApi.flight;
 
-import com.viniciusps2.flightapi.aircraft.Aircraft;
-import com.viniciusps2.flightapi.city.City;
-import com.viniciusps2.flightapi.pilot.Pilot;
+import com.viniciusps2.flightApi.aircraft.Aircraft;
+import com.viniciusps2.flightApi.airport.Airport;
+import com.viniciusps2.flightApi.pilot.Pilot;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -17,8 +17,8 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Flight {
-
     @Id
+    @GeneratedValue
     private Long id;
 
     private FlightStatus status;
@@ -28,15 +28,15 @@ public class Flight {
     private Aircraft aircraft;
 
     @OneToOne
-    @JoinColumn(name = "origin_city_id", nullable = false)
-    private City originCity;
+    @JoinColumn(name = "origin_id", nullable = false)
+    private Airport origin;
 
     @OneToOne
-    @JoinColumn(name = "destination_city_id", nullable = false)
-    private City destinationCity;
+    @JoinColumn(name = "destination_id")
+    private Airport destination;
 
     @OneToOne
-    @JoinColumn(name = "pilot_id", nullable = false)
+    @JoinColumn(name = "pilot_id")
     private Pilot pilot;
 
     @Column(nullable = false)

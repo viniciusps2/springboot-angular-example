@@ -1,4 +1,4 @@
-package com.viniciusps2.flightapi.helpers;
+package com.viniciusps2.flightApi.helpers;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;

@@ -1,9 +1,9 @@
-package com.viniciusps2.flightapi.fixtures;
+package com.viniciusps2.flightApi.fixtures;
 
-import com.viniciusps2.flightapi.city.City;
-import com.viniciusps2.flightapi.flight.Flight;
-import com.viniciusps2.flightapi.flight.FlightStatus;
-import com.viniciusps2.flightapi.pilot.Pilot;
+import com.viniciusps2.flightApi.airport.Airport;
+import com.viniciusps2.flightApi.flight.Flight;
+import com.viniciusps2.flightApi.flight.FlightStatus;
+import com.viniciusps2.flightApi.pilot.Pilot;
 
 import java.util.Date;
 
@@ -14,8 +14,8 @@ public class FlightFixture {
                 .arrivalDate(new Date())
                 .departureDate(new Date())
                 .aircraft(AircraftFixture.getAircraft())
-                .destinationCity(new City(1L, "Guarulhos", "SP", "BR"))
-                .originCity(new City(2L, "Congonhas", "SP", "BR"))
+                .destination(new Airport(1L, "Guarulhos, São Paulo", "Brazil", "GRU"))
+                .origin(new Airport(2L, "Ôta, Tokyo", "Japan", "HND"))
                 .pilot(new Pilot(1L, "Fulano", "Silva"))
                 .status(FlightStatus.SCHEDULED)
                 .build();

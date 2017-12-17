@@ -1,21 +1,23 @@
-package com.viniciusps2.flightapi.city;
+package com.viniciusps2.flightApi.airport;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class City {
+public class Airport {
     @Id
+    @GeneratedValue
     private Long id;
 
-    private String name;
-    private String stateCode;
-    private String countryCode;
+    private String location;
+    private String country;
+    private String code;
 }
