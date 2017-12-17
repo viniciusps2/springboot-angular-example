@@ -6,33 +6,69 @@
 	  			
 				<div class="panel-body">
 					
-					<div class="col-md-1 form-group">
+					<div class="col-md-2 form-group">
 						<label for="flightNumber">Nº:</label>
 						<input id="flightNumber" class="form-control" type="text" ng-model="vm.searchParams.id">
 					</div>
 
 					<div class="col-md-2 form-group">
-						<label for="departureDate">Departure Date:</label>
-						<input id="departureDate" class="form-control" type="text" ng-model="vm.searchParams.departure.from">
-					</div>
-
-					<div class="col-md-2 form-group">
-						<label for="location">Origin:</label>
-						<select id="location" class="form-control" ng-model="vm.searchParams.location">
-						</select>
+						<label for="origin">Origin: {{vm.searchParams.originId}}</label>
+						<airport-select ng-model="vm.searchParams.originId"></airport>
 					</div>
 
 					<div class="col-md-2 form-group">
 						<label for="destination">Destination:</label>
-						<select id="destination" class="form-control" ng-model="vm.searchParams.destination">
+						<select id="destination" class="form-control" ng-model="vm.searchParams.destinationId">
+						</select>
+					</div>
+
+					<div class="col-md-2 form-group">
+						<label for="aircraft">Aircraft:</label>
+						<select id="aircraft" class="form-control" ng-model="vm.searchParams.aircraftId">
+						</select>
+					</div>
+
+					<div class="col-md-2 form-group">
+						<label for="pilot">Pilot:</label>
+						<select id="pilot" class="form-control" ng-model="vm.searchParams.pilotId">
 						</select>
 					</div>
 
 					<div class="col-md-2 form-group">
 						<label for="status">Status:</label>
 						<select id="status" class="form-control" ng-model="vm.searchParams.status">
+							<option ng-repeat="(key, value) in vm.allFlightStatus" value="{{key}}">{{value}}</option>
 						</select>
 					</div>
+
+					<div class="col-md-4 dropdown form-group dropdown-start-parent">
+					    <label>Departure From:</label>
+					    <a class="dropdown-toggle" id="dropdownStart" role="button" data-toggle="dropdown" data-target=".dropdown-start-parent">
+					        <div class="input-group date">
+					            <input type="text" class="form-control" data-ng-model="vm.searchParams.departure.from">
+					            <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+					        </div>
+					    </a>
+					    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+					        <datetimepicker data-ng-model="vm.searchParams.departure.from"
+					                        data-datetimepicker-config="{ dropdownSelector: '#dropdownStart', renderOn: 'end-date-changed' }"></datetimepicker>
+					    </ul>
+					</div>
+
+					<div class="col-md-4 dropdown form-group dropdown-end-parent">
+					    <label>Departure Until</label>
+					    <a class="dropdown-toggle" id="dropdownEnd" role="button" data-toggle="dropdown" data-target=".dropdown-end-parent">
+					        <div class="input-group date">
+					            <input type="text" class="form-control" data-ng-model="vm.searchParams.departure.until">
+					            <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+					        </div>
+					    </a>
+					    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+					        <datetimepicker data-ng-model="vm.searchParams.departure.until"
+					                        data-datetimepicker-config="{ dropdownSelector: '#dropdownEnd', renderOn: 'start-date-changed' }"></datetimepicker>
+					    </ul>
+					</div>
+
 
 					<div class="col-md-2 form-group">
 						<br>
@@ -45,6 +81,7 @@
 
 			</div>
 		</div>
+
 	</form>
 
 	<div class="row" ng-if="vm.message.error">
