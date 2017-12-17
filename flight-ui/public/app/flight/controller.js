@@ -3,14 +3,15 @@
 
   angular.module('flight-ui').controller('FlightListCtrl', FlightListCtrl)
 
-  FlightListCtrl.$inject = ['$routeParams', '$q', 'Flight', 'FlightService']
+  FlightListCtrl.$inject = ['$routeParams', '$q', 'Flight', 'FlightService', 'allFlightStatus']
 
-  function FlightListCtrl ($routeParams, $q, Flight, FlightService) {
+  function FlightListCtrl ($routeParams, $q, Flight, FlightService, allFlightStatus) {
     var vm = this
 
     angular.extend(this, {
       flights: [],
       searchParams: {},
+      allFlightStatus: allFlightStatus,
       search: search,
       addFlight: addFlight,
       viewFlight: viewFlight,

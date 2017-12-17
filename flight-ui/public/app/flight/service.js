@@ -7,7 +7,6 @@
 
   function FlightService ($uibModal, Flight, ModalService) {
     return {
-      create: create,
       view: view
     }
 
@@ -18,15 +17,6 @@
           title: 'Flight nº ' + flight.id,
           flight: flight
         })
-      })
-    }
-
-    function create () {
-      return ModalService.open({
-        templateUrl: 'app/flight/modal.html',
-        title: 'New Flight',
-        flight: {},
-        onSave: Flight.create
       })
     }
   }
