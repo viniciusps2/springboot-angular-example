@@ -1,12 +1,14 @@
-package com.viniciusps2.flightApi.flight;
+package com.viniciusps2.flightApi.domain.flight;
 
-import com.viniciusps2.flightApi.aircraft.Aircraft;
-import com.viniciusps2.flightApi.airport.Airport;
-import com.viniciusps2.flightApi.pilot.Pilot;
+import com.viniciusps2.flightApi.domain.aircraft.Aircraft;
+import com.viniciusps2.flightApi.domain.airport.Airport;
+import com.viniciusps2.flightApi.domain.pilot.Pilot;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Cascade;
+import org.springframework.jdbc.core.CallableStatementCallback;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -23,19 +25,19 @@ public class Flight {
 
     private FlightStatus status;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "aircraft_id", nullable = false)
     private Aircraft aircraft;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "origin_id", nullable = false)
     private Airport origin;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "destination_id")
     private Airport destination;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "pilot_id")
     private Pilot pilot;
 

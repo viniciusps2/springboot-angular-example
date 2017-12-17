@@ -1,4 +1,4 @@
-package com.viniciusps2.flightApi.pilot;
+package com.viniciusps2.flightApi.domain.pilot;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -1,9 +1,9 @@
 package com.viniciusps2.flightApi.fixtures;
 
-import com.viniciusps2.flightApi.airport.Airport;
-import com.viniciusps2.flightApi.flight.Flight;
-import com.viniciusps2.flightApi.flight.FlightStatus;
-import com.viniciusps2.flightApi.pilot.Pilot;
+import com.viniciusps2.flightApi.domain.airport.Airport;
+import com.viniciusps2.flightApi.domain.flight.Flight;
+import com.viniciusps2.flightApi.domain.flight.FlightStatus;
+import com.viniciusps2.flightApi.domain.pilot.Pilot;
 
 import java.util.Date;
 

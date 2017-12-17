@@ -1,4 +1,4 @@
-package com.viniciusps2.flightApi.airport;
+package com.viniciusps2.flightApi.domain.airport;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

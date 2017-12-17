@@ -1,4 +1,4 @@
-package com.viniciusps2.flightApi.flight;
+package com.viniciusps2.flightApi.domain.flight;
 
 import com.querydsl.core.BooleanBuilder;
 import com.querydsl.core.types.Predicate;

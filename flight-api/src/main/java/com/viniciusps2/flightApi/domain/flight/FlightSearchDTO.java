@@ -1,4 +1,4 @@
-package com.viniciusps2.flightApi.flight;
+package com.viniciusps2.flightApi.domain.flight;
 
 import com.viniciusps2.flightApi.common.DateRange;
 import lombok.Data;
