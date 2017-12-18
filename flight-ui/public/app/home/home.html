@@ -1,0 +1,35 @@
+<div class="container">
+
+	<div class="row">
+		<h2>Flight List By Airline</h2>
+	</div>
+
+	<div class="row">
+		<div class="panel panel-default">
+		  <table class="table table-airlines">
+
+		  	<tbody ng-if="!vm.airlines.length">
+			  	<tr>
+			  		<td>
+						Empty
+			  		</td>
+			  	</tr>
+		  	</tbody>
+
+		  	
+		  	<tbody ng-if="vm.airlines.length">
+			  	<tr>
+			  		<th class="col-md-1">Airline Name</th>
+			  		<th class="col-md-1"></th>
+			  	</tr>	    
+			  	<tr ng-repeat="airline in vm.airlines">
+			      <td>{{airline.name}}</td>
+			      <td>
+					<button class="btn btn-primary btn-md" role="button" ng-click="vm.openAirline(airline.id)">Show Flights</button>
+			      </td>
+			    </tr>
+			  </tbody>
+		  </table>
+		</div>
+	</div>
+</div>

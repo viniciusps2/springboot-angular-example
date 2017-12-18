@@ -20,8 +20,9 @@
       findById: findById
     }
 
-    function search (searchParams) {
-      return resource.query({search: JSON.stringify(searchParams)}).$promise
+    function search (searchParams, airlineId) {
+      var params = angular.extend({airlineId}, searchParams)
+      return resource.query({search: JSON.stringify(params)}).$promise
     }
 
     function findById (id) {

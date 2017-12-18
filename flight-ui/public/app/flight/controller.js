@@ -3,40 +3,31 @@
 
   angular.module('flight-ui').controller('FlightListCtrl', FlightListCtrl)
 
-  FlightListCtrl.$inject = ['$routeParams', '$q', 'Flight', 'FlightService', 'allFlightStatus']
+  FlightListCtrl.$inject = ['$routeParams', 'Flight', 'FlightService', 'allFlightStatus']
 
-  function FlightListCtrl ($routeParams, $q, Flight, FlightService, allFlightStatus) {
+  function FlightListCtrl ($routeParams, Flight, FlightService, allFlightStatus) {
     var vm = this
+    var airlineId = $routeParams.airlineId
 
-    angular.extend(this, {
+    angular.extend(this, {  
       flights: [],
       searchParams: {},
       allFlightStatus: allFlightStatus,
       search: search,
-      addFlight: addFlight,
       viewFlight: viewFlight,
-      removeFlight: removeFlight,
       initialize: initialize
     })
 
     initialize()
 
     function search () {
-      return Flight.search(vm.searchParams).then(function (res) {
+      return Flight.search(vm.searchParams, airlineId).then(function (res) {
         vm.flights = res.content
       })
     }
 
-    function addFlight () {
-      return FlightService.create(id).then(listFlights)
-    }
-
     function viewFlight (flightId) {
       return FlightService.view(flightId)
-    }
-
-    function removeFlight (flight) {
-      return FlightService.remove(flight).then(listFlights)
     }
 
     function initialize () {

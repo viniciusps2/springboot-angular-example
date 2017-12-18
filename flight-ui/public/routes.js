@@ -15,10 +15,12 @@
     })
 
     route('/', {
-      redirectTo: '/flight'
+      templateUrl: 'app/home/home.html',
+      controller: 'HomeCtrl',
+      controllerAs: 'vm'
     })
 
-    route('/flight', {
+    route('/flight/airline/:airlineId', {
       templateUrl: 'app/flight/list.html',
       controller: 'FlightListCtrl',
       controllerAs: 'vm'
