@@ -23,10 +23,13 @@ import java.util.Date;
 public class Flight {
     @Id
     @GeneratedValue
+    // todo: retirar set id
     private Long id;
 
     private FlightStatus status;
 
+    // todo: empresa aérea
+    // todo: lazy
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "aircraft_id", nullable = false)
     private Aircraft aircraft;

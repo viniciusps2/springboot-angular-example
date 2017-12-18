@@ -40,10 +40,8 @@ public class FlightController {
                              @RequestParam(value = "search", required = false) String searchJson) throws IOException {
         FlightSearchDTO searchDTO = new ObjectMapper().readValue(searchJson, FlightSearchDTO.class);
         LOGGER.info(searchDTO.toString());
-        //LOGGER.info(flightRepository.findAll().toString());
 
         return flightSearchService.search(searchDTO, pageRequest);
-        //return null;
     }
 
     @GetMapping(value = "/{id}")

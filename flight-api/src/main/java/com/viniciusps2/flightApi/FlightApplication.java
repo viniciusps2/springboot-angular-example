@@ -18,6 +18,7 @@ public class FlightApplication {
 		SpringApplication.run(FlightApplication.class, args);
 	}
 
+    // todo: colocar no application.yaml
 	@Bean
     public WebMvcConfigurer corsConfigurer() {
         return new WebMvcConfigurerAdapter() {
