@@ -18,9 +18,15 @@ INSERT INTO pilot(id, first_name, last_name) values
 (2, 'Fulano', 'Silva')
 ;
 
-INSERT INTO flight(id, pilot_id, aircraft_id, origin_id, destination_id,
+INSERT INTO airline(id, name) values
+(1, 'TAM'),
+(2, 'Azul'),
+(3, 'Gol')
+;
+
+INSERT INTO flight(id, airline_id, pilot_id, aircraft_id, origin_id, destination_id,
             departure_date, arrival_date, status) values
-(1, 1, 1, 1, 2, '2017-01-01 10:00:00', '2017-01-01 11:00:00', 1),
-(2, 1, 2, 2, 1, '2017-02-01 11:00:00', '2017-01-01 12:00:00', 2),
-(3, 2, 2, 2, 1, '2017-03-02 13:00:00', '2017-01-02 14:00:00', 3),
+(1, 1, 1, 1, 1, 2, '2017-01-01 10:00:00', '2017-01-01 11:00:00', 1),
+(2, 2, 1, 2, 2, 1, '2017-02-01 11:00:00', '2017-01-01 12:00:00', 2),
+(3, 2, 2, 2, 2, 1, '2017-03-02 13:00:00', '2017-01-02 14:00:00', 3),
 ;
