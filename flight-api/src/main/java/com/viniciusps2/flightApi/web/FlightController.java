@@ -15,6 +15,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
+import java.util.List;
 
 @RestController
 @RequestMapping("/flights")
@@ -39,8 +40,10 @@ public class FlightController {
                              @RequestParam(value = "search", required = false) String searchJson) throws IOException {
         FlightSearchDTO searchDTO = new ObjectMapper().readValue(searchJson, FlightSearchDTO.class);
         LOGGER.info(searchDTO.toString());
+        //LOGGER.info(flightRepository.findAll().toString());
 
         return flightSearchService.search(searchDTO, pageRequest);
+        //return null;
     }
 
     @GetMapping(value = "/{id}")
