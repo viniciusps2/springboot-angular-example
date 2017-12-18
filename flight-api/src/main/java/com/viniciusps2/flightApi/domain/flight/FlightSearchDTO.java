@@ -10,7 +10,8 @@ public class FlightSearchDTO {
     private DateRange arrival;
     private Long originId;
     private Long destinationId;
-    private FlightStatus status;
     private Long aircraftId;
     private Long pilotId;
+    private Long airlineId;
+    private FlightStatus status;
 }

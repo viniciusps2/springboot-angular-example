@@ -4,6 +4,8 @@ import com.viniciusps2.flightApi.common.DateRange;
 import com.viniciusps2.flightApi.domain.aircraft.Aircraft_;
 import com.viniciusps2.flightApi.domain.airport.Airport_;
 import com.viniciusps2.flightApi.domain.pilot.Pilot_;
+import com.viniciusps2.flightApi.domain.flight.Flight_;
+import com.viniciusps2.flightApi.domain.airline.Airline_;
 import org.springframework.data.jpa.domain.Specification;
 
 import javax.persistence.criteria.JoinType;
@@ -14,39 +16,43 @@ import java.util.Date;
 import java.util.List;
 
 public class FlightSpecifications {
-    public FlightSpecifications () {}
+    private FlightSpecifications () {}
 
-    // todo: renomear p/ whenId, when...
-    public static Specification<Flight> id(Long value) {
+    public static Specification<Flight> whenId(Long value) {
         return (root, query, cb) ->
             value == null ? null : cb.equal(root.get(Flight_.id), value);
     }
 
-    public static Specification<Flight> pilotId(Long value) {
+    public static Specification<Flight> whenAirlineId(Long value) {
+        return (root, query, cb) ->
+            value == null ? null : cb.equal(root.get(Flight_.airline).get(Airline_.id), value);
+    }
+
+    public static Specification<Flight> whenPilotId(Long value) {
         return (root, query, cb) ->
             value == null ? null : cb.equal(root.get(Flight_.pilot).get(Pilot_.id), value);
     }
 
-    public static Specification<Flight> aircraftId(Long value) {
+    public static Specification<Flight> whenAircraftId(Long value) {
         return (root, query, cb) ->
             value == null ? null : cb.equal(root.get(Flight_.aircraft).get(Aircraft_.id), value);
     }
 
-    public static Specification<Flight> origin(Long value) {
+    public static Specification<Flight> whenOrigin(Long value) {
         return (root, query, cb) ->
             value == null ? null : cb.equal(root.get(Flight_.origin).get(Airport_.id), value);
     }
 
-    public static Specification<Flight> destination(Long value) {
+    public static Specification<Flight> whenDestination(Long value) {
         return (root, query, cb) ->
             value == null ? null : cb.equal(root.get(Flight_.destination).get(Airport_.id), value);
     }
 
-    public static Specification<Flight> departure(DateRange dateRange) {
+    public static Specification<Flight> whenDeparture(DateRange dateRange) {
         return matchDateRange(Flight_.departureDate, dateRange);
     }
 
-    public static Specification<Flight> arrival(DateRange dateRange) {
+    public static Specification<Flight> whenArrival(DateRange dateRange) {
         return matchDateRange(Flight_.departureDate, dateRange);
     }
 
@@ -71,10 +77,11 @@ public class FlightSpecifications {
 
     public static Specification<Flight> joinFetchAll() {
         return  (root, query, cb) -> {
-            root.fetch("aircraft", JoinType.LEFT);
-            root.fetch("origin", JoinType.LEFT);
+            root.fetch("airline", JoinType.INNER);
+            root.fetch("aircraft", JoinType.INNER);
+            root.fetch("origin", JoinType.INNER);
+            root.fetch("destination", JoinType.INNER);
             root.fetch("pilot", JoinType.LEFT);
-            root.fetch("destination", JoinType.LEFT);
             return null;
         };
     }

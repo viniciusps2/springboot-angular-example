@@ -1,8 +1,6 @@
 package com.viniciusps2.flightApi.domain.airport;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,6 +13,7 @@ import javax.persistence.Id;
 public class Airport {
     @Id
     @GeneratedValue
+    @Setter(AccessLevel.NONE)
     private Long id;
 
     private String location;

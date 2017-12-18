@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import static com.viniciusps2.flightApi.common.QueryPredicates.isEqualWhenExists;
 import static com.viniciusps2.flightApi.common.QueryPredicates.matchDateRange;
 import static com.viniciusps2.flightApi.domain.flight.FlightSpecifications.*;
+import static org.springframework.data.jpa.domain.Specifications.where;
 
 
 @Service
@@ -20,24 +21,23 @@ public class FlightSearchService {
     private FlightRepository flightRepository;
 
     public Page<Flight> search (FlightSearchDTO searchDTO, Pageable pageRequest) {
-        //Specification<Flight>specSearch = new FlightSpecifications<Flight>().advancedSearch(searchDTO);
-
-        //Specifications<Flight> spec = Specifications.where(specFetch).and(getSearchQuery(searchDTO));
-        //return flightRepository.findAll(getSearchQuery(searchDTO), pageRequest);
-//        return flightRepository.findAll(spec, pageRequest);
-
         return flightRepository.findAll(advancedSearch(searchDTO), pageRequest);
     }
 
+    public Flight findById (Long id) {
+        return flightRepository.findOne(where(whenId(id)).and(joinFetchAll()));
+    }
+
     public Specifications<Flight> advancedSearch(FlightSearchDTO search) {
-        return Specifications
-                .where(id(search.getId()))
-                .and(pilotId(search.getPilotId()))
-                .and(aircraftId(search.getAircraftId()))
-                .and(departure(search.getDeparture()))
-                .and(arrival(search.getArrival()))
-                .and(destination(search.getDestinationId()))
-                .and(origin(search.getOriginId()))
+        return
+                where(whenId(search.getId()))
+                .and(whenPilotId(search.getPilotId()))
+                .and(whenAirlineId(search.getAirlineId()))
+                .and(whenAircraftId(search.getAircraftId()))
+                .and(whenDeparture(search.getDeparture()))
+                .and(whenArrival(search.getArrival()))
+                .and(whenDestination(search.getDestinationId()))
+                .and(whenOrigin(search.getOriginId()))
                 .and(joinFetchAll());
     }
 
