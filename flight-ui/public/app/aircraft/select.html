@@ -1,0 +1,4 @@
+<select class="form-control" ng-model="ngModel">
+	<option></option>
+	<option ng-repeat="aircraft in vm.aircrafts" value="{{aircraft.id}}">{{aircraft.model}} - {{aircraft.serialNumber}}</option>
+</select>

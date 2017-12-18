@@ -12,31 +12,29 @@
 					</div>
 
 					<div class="col-md-2 form-group">
-						<label for="origin">Origin: {{vm.searchParams.originId}}</label>
-						<airport-select ng-model="vm.searchParams.originId"></airport>
+						<label for="origin">Origin:</label>
+						<airport-select ng-model="vm.searchParams.originId"></airport-select>
 					</div>
 
 					<div class="col-md-2 form-group">
 						<label for="destination">Destination:</label>
-						<select id="destination" class="form-control" ng-model="vm.searchParams.destinationId">
-						</select>
+						<airport-select ng-model="vm.searchParams.destinationId"></airport-select>
 					</div>
 
 					<div class="col-md-2 form-group">
 						<label for="aircraft">Aircraft:</label>
-						<select id="aircraft" class="form-control" ng-model="vm.searchParams.aircraftId">
-						</select>
+						<aircraft-select ng-model="vm.searchParams.aircraftId"></aircraft-select>
 					</div>
 
 					<div class="col-md-2 form-group">
 						<label for="pilot">Pilot:</label>
-						<select id="pilot" class="form-control" ng-model="vm.searchParams.pilotId">
-						</select>
+						<pilot-select ng-model="vm.searchParams.pilotId"></pilot-select>
 					</div>
 
 					<div class="col-md-2 form-group">
 						<label for="status">Status:</label>
 						<select id="status" class="form-control" ng-model="vm.searchParams.status">
+							<option></option>
 							<option ng-repeat="(key, value) in vm.allFlightStatus" value="{{key}}">{{value}}</option>
 						</select>
 					</div>
