@@ -2,10 +2,9 @@ package com.viniciusps2.flightApi.domain.flight;
 
 import com.viniciusps2.flightApi.common.DateRange;
 import com.viniciusps2.flightApi.domain.aircraft.Aircraft_;
+import com.viniciusps2.flightApi.domain.airline.Airline_;
 import com.viniciusps2.flightApi.domain.airport.Airport_;
 import com.viniciusps2.flightApi.domain.pilot.Pilot_;
-import com.viniciusps2.flightApi.domain.flight.Flight_;
-import com.viniciusps2.flightApi.domain.airline.Airline_;
 import org.springframework.data.jpa.domain.Specification;
 
 import javax.persistence.criteria.JoinType;
@@ -48,6 +47,11 @@ public class FlightSpecifications {
             value == null ? null : cb.equal(root.get(Flight_.destination).get(Airport_.id), value);
     }
 
+    public static Specification<Flight> whenStatus(FlightStatus status) {
+        return (root, query, cb) ->
+                status == null ? null : cb.equal(root.get(Flight_.status), status);
+    }
+
     public static Specification<Flight> whenDeparture(DateRange dateRange) {
         return matchDateRange(Flight_.departureDate, dateRange);
     }
@@ -77,11 +81,14 @@ public class FlightSpecifications {
 
     public static Specification<Flight> joinFetchAll() {
         return  (root, query, cb) -> {
-            root.fetch("airline", JoinType.INNER);
-            root.fetch("aircraft", JoinType.INNER);
-            root.fetch("origin", JoinType.INNER);
-            root.fetch("destination", JoinType.INNER);
-            root.fetch("pilot", JoinType.LEFT);
+            Boolean isCountQuery = query.getResultType().equals(Long.class);
+            if (!isCountQuery) {
+                root.fetch("aircraft", JoinType.LEFT);
+                root.fetch("airline", JoinType.LEFT);
+                root.fetch("origin", JoinType.LEFT);
+                root.fetch("destination", JoinType.LEFT);
+                root.fetch("pilot", JoinType.LEFT);
+            }
             return null;
         };
     }

@@ -14,10 +14,10 @@ public class FlightFixture {
                 .arrivalDate(new Date())
                 .departureDate(new Date())
                 .aircraft(AircraftFixture.getAircraft())
-                .airline(new Airline(null, "TAM"))
-                .destination(new Airport(null, "Guarulhos, São Paulo", "Brazil", "GRU"))
-                .origin(new Airport(null, "Ôta, Tokyo", "Japan", "HND"))
-                .pilot(new Pilot(null, "Fulano", "Silva"))
+                .airline(new Airline(1L, "TAM"))
+                .destination(new Airport(1L, "Guarulhos, São Paulo", "Brazil", "GRU"))
+                .origin(new Airport(2L, "Ôta, Tokyo", "Japan", "HND"))
+                .pilot(new Pilot(1L, "Fulano", "Silva"))
                 .status(FlightStatus.SCHEDULED);
 
     }

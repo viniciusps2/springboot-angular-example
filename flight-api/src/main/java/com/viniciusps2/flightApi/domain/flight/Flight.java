@@ -26,7 +26,7 @@ public class Flight {
 
     private FlightStatus status;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "airline_id", nullable = false)
     private Airline airline;
 
