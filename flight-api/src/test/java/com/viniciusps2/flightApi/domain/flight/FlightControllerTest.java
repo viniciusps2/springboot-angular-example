@@ -18,7 +18,9 @@ import org.springframework.test.web.servlet.MockMvc;
 import java.util.Arrays;
 import java.util.List;
 
+
 import static org.hamcrest.Matchers.hasSize;
+import static org.hamcrest.Matchers.is;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Matchers.any;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -35,19 +37,35 @@ public class FlightControllerTest {
     private MockMvc mvc;
 
     @MockBean
-    private FlightRepository flightRepository;
+    private FlightSearchService flightSearchService;
 
     @Test
     public void givenFlightsWhenGetListThenReturnResults() throws Exception {
-        List<Flight> flights = Arrays.asList(FlightFixture.getScheduledFlight());
+        List<Flight> flights = Arrays.asList(FlightFixture.builder().id(1L).build());
         Page<Flight> flightPage = new PageWrapper<>(flights).getPage();
 
-        given(flightRepository.findAll(any(Pageable.class))).willReturn(flightPage);
+        given(flightSearchService
+                .search(any(FlightSearchDTO.class), any(Pageable.class)))
+                .willReturn(flightPage);
 
         mvc.perform(get("/flights").contentType(MediaType.APPLICATION_JSON))
         .andDo(print())
         .andExpect(status().isOk())
         .andExpect(jsonPath("$.content", hasSize(1)));
+    }
+
+    @Test
+    public void givenFlightWhenFindOneThenReturnOne() throws Exception {
+        Flight flight = FlightFixture.builder().id(1L).build();
+        given(flightSearchService.findById(flight.getId()))
+                .willReturn(flight);
+
+        mvc.perform(get("/flights/" + flight.getId().toString())
+                .contentType(MediaType.APPLICATION_JSON))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.id", is(flight.getId().intValue())));
+
     }
 
 }

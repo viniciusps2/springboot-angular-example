@@ -1,9 +1,15 @@
 package com.viniciusps2.flightApi.domain.flight;
 
 import com.viniciusps2.flightApi.common.DateRange;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class FlightSearchDTO {
     private Long id;
     private DateRange departure;
