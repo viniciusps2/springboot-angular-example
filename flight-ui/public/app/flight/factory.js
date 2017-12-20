@@ -21,7 +21,7 @@
     }
 
     function search (searchParams, airlineId) {
-      var params = angular.extend({airlineId}, searchParams)
+      var params = angular.extend({airlineId: airlineId}, searchParams)
       return resource.query({search: JSON.stringify(params)}).$promise
     }
 

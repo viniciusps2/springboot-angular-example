@@ -20,8 +20,8 @@
 
     initialize()
 
-    function search () {
-      return Flight.search(vm.searchParams, airlineId).then(function (res) {
+    function search (searchParams) {
+      return Flight.search(searchParams, airlineId).then(function (res) {
         vm.flights = res.content
       })
     }
@@ -31,7 +31,7 @@
     }
 
     function initialize () {
-      search()
+      search(vm.searchParams)
     }
   }
 })()

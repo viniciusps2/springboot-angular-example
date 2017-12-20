@@ -17,7 +17,7 @@
       vm.errorMessage = ''
 
       if (modalContext.onSave) {
-        return modalContext.onSave(vm.data)
+        return modalContext.onSave(modalContext)
           .then(function () {
             close()
           })

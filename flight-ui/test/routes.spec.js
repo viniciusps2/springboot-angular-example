@@ -13,10 +13,10 @@ describe('Routes', function () {
     }
   ))
 
-  describe('/flight/:id', function () {
-    it('should load flight by id', function () {
-      expect(route.routes['/flight/:id'].controller).toEqual('FlightListCtrl')
-      expect(route.routes['/flight/:id'].templateUrl).toEqual('app/flight/list.html')
+  describe('/flight/airline/:airlineId', function () {
+    it('should load airline by id', function () {
+      expect(route.routes['/flight/airline/:airlineId'].controller).toEqual('FlightListCtrl')
+      expect(route.routes['/flight/airline/:airlineId'].templateUrl).toEqual('app/flight/list.html')
     })
   })
 })
