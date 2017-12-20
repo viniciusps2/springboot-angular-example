@@ -1,4 +1,4 @@
-package com.viniciusps2.flightApi.web;
+package com.viniciusps2.flightApi.web.api;
 
 import com.viniciusps2.flightApi.domain.pilot.Pilot;
 import com.viniciusps2.flightApi.domain.pilot.PilotRepository;

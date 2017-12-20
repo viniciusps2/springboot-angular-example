@@ -18,7 +18,6 @@ import org.springframework.test.web.servlet.MockMvc;
 import java.util.Arrays;
 import java.util.List;
 
-
 import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.is;
 import static org.mockito.BDDMockito.given;
@@ -67,5 +66,18 @@ public class FlightControllerTest {
                 .andExpect(jsonPath("$.id", is(flight.getId().intValue())));
 
     }
+
+    @Test
+    public void whenNoFlightWhenFindOneThenReturnNotFound() throws Exception {
+        Flight flight = FlightFixture.builder().id(1L).build();
+        given(flightSearchService.findById(flight.getId()))
+                .willReturn(null);
+
+        mvc.perform(get("/flights/" + flight.getId().toString())
+                .contentType(MediaType.APPLICATION_JSON))
+                .andDo(print())
+                .andExpect(status().isNotFound());
+    }
+
 
 }
