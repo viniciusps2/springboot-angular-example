@@ -9,6 +9,7 @@ import javax.persistence.Id;
 
 @Entity
 @Data
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 public class Aircraft {

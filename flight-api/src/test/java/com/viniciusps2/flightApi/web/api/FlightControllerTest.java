@@ -1,7 +1,10 @@
-package com.viniciusps2.flightApi.domain.flight;
+package com.viniciusps2.flightApi.web.api;
 
 import com.viniciusps2.flightApi.FlightApplication;
-import com.viniciusps2.flightApi.fixtures.FlightFixture;
+import com.viniciusps2.flightApi.domain.flight.Flight;
+import com.viniciusps2.flightApi.domain.flight.FlightSearchDTO;
+import com.viniciusps2.flightApi.domain.flight.FlightSearchService;
+import com.viniciusps2.flightApi.fixtures.FlightFixtureBuilder;
 import com.viniciusps2.flightApi.helpers.PageWrapper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -13,6 +16,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.Arrays;
@@ -30,6 +34,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes=FlightApplication.class)
 @AutoConfigureMockMvc
+@WebAppConfiguration
 public class FlightControllerTest {
 
     @Autowired
@@ -40,7 +45,7 @@ public class FlightControllerTest {
 
     @Test
     public void givenFlightsWhenGetListThenReturnResults() throws Exception {
-        List<Flight> flights = Arrays.asList(FlightFixture.builder().id(1L).build());
+        List<Flight> flights = Arrays.asList(FlightFixtureBuilder.getFlight().id(1L).build());
         Page<Flight> flightPage = new PageWrapper<>(flights).getPage();
 
         given(flightSearchService
@@ -55,7 +60,7 @@ public class FlightControllerTest {
 
     @Test
     public void givenFlightWhenFindOneThenReturnOne() throws Exception {
-        Flight flight = FlightFixture.builder().id(1L).build();
+        Flight flight = FlightFixtureBuilder.getFlight().id(1L).build();
         given(flightSearchService.findById(flight.getId()))
                 .willReturn(flight);
 
@@ -69,7 +74,7 @@ public class FlightControllerTest {
 
     @Test
     public void whenNoFlightWhenFindOneThenReturnNotFound() throws Exception {
-        Flight flight = FlightFixture.builder().id(1L).build();
+        Flight flight = FlightFixtureBuilder.getFlight().id(1L).build();
         given(flightSearchService.findById(flight.getId()))
                 .willReturn(null);
 
