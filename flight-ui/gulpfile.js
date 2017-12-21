@@ -26,7 +26,10 @@ const jsSource = [
 const jsSourceVendor = [
   getFullPath('public/bower_components/angular/**/*.min.js'),
   getFullPath('public/bower_components/angular-bootstrap/ui-bootstrap.min.js'),
-  getFullPath('public/bower_components/**/*.min.js')
+  getFullPath('public/bower_components/moment/min/moment.min.js'),
+  getFullPath('public/bower_components/**/*.min.js'),
+  getFullPath('public/bower_components/angular-bootstrap-datetimepicker/src/js/datetimepicker.js'),
+  getFullPath('public/bower_components/angular-bootstrap-datetimepicker/src/js/datetimepicker.templates.js'),
 ]
 
 const jsSourceDist = [
@@ -214,7 +217,6 @@ gulp.task('minify-js', () => {
 gulp.task('minify-vendor-js', () => {
   return gulp.src(jsSourceVendor)
     .pipe(concat('_vendor.min.js'))
-    .pipe(preprocess())
     .pipe(gulp.dest(distFolder))
 })
 

@@ -7,7 +7,7 @@
     "prod": "node node_modules/gulp/bin/gulp serve-prod",
     "test": "node node_modules/gulp/bin/gulp test",
     "test-watch": "node node_modules/gulp/bin/gulp test -w",
-    "dev": "PORT=3001 node node_modules/gulp/bin/gulp serve"
+    "dev": "node node_modules/gulp/bin/gulp serve"
   },
   "dependencies": {
     "bower": "^1.7.9",

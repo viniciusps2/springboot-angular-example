@@ -12,7 +12,6 @@ describe('FlightService Spec', function () {
       FlightService = _FlightService_
       Flight = _Flight_
       ModalService = _ModalService_
-      // uibOpenMock()
     })
   })
 
@@ -32,12 +31,6 @@ describe('FlightService Spec', function () {
       done()
     })
   })
-
-  function uibOpenMock () {
-    sandbox.stub(ModalService, 'open').callsFake(function (opts) {
-      return {result: opts.resolve.modalContext().saveFunction({name: 'abc'})}
-    })
-  }
 
   function modalServiceOpenMock () {
     sandbox.mock(ModalService)

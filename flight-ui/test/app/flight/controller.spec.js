@@ -1,5 +1,5 @@
 describe('FlightListCtrl Spec', function () {
-  var scope, controller, q, Flight, FlightListCtrl, FlightService, Flight
+  var scope, controller, FlightListCtrl, FlightService, Flight
 
   var AIRLINE_ID = 3
 
